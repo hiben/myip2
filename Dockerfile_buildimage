@@ -1,0 +1,11 @@
+FROM alpine:3
+
+RUN apk add --no-cache bash curl zip libgcc libc6-compat openjdk17-jdk && \
+    curl -s "https://get.sdkman.io" | bash
+
+SHELL ["/bin/bash", "-ci"]
+
+RUN sdk version
+RUN sdk install gradle 8.13
+
+ENTRYPOINT ["/bin/bash", "-ci"]
